@@ -152,8 +152,8 @@ h1 {
 
 .lyrics {
   display: inline-block;
-  text-align: left;
-  padding-top: 6vh;
+  padding-top: 2.5vh;
+  max-width: 100%;
 }
 
 /* Answers View */

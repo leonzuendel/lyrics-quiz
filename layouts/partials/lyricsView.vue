@@ -1,6 +1,6 @@
 <template>
   <div id="lyrics-view">
-    <div class="pre-formatted">{{ cutLyrics }}</div>
+    <div class="pre-formatted lyrics">{{ cutLyrics }}</div>
   </div>
 </template>
 
@@ -19,9 +19,9 @@ export default {
     cutLyrics() {
       const lines = this.lyrics.split("\n");
       // remove one line, starting at the first position
-      lines.slice(0, 9);
+      const newSplitText = lines.slice(0, 13);
       // join the array back into a single string
-      const newtext = lines.join("\n");
+      const newtext = newSplitText.join("\n");
       return newtext;
     }
   },
