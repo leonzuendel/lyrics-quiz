@@ -1,6 +1,6 @@
 <template>
   <div v-show="gameIsReady != true && loading != true" id="start-menu">
-    <h1>WIe viele Songs?</h1>
+    <h1>Wie viele Songs?</h1>
     <div class="start-menu-grid">
       <button @click="$parent.getRandomSongs(10)">10 Songs</button>
       <button @click="$parent.getRandomSongs(30)">30 Songs</button>

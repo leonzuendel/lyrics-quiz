@@ -59,7 +59,7 @@ export default {
         this.answered = true;
         if (this.$parent.score === 0) {
         } else {
-          this.$parent.score -= 100;
+          this.$parent.score -= 50;
         }
       }
       setTimeout(() => {
