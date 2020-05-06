@@ -2,7 +2,7 @@
   <div>
     <h2>The View</h2>
     Lyrics: {{ Lyrics }}
-    <button @click="getLyrics()">Get Lyrics</button>
+    <button @click="getLyrics()">Get Lyrics!</button>
   </div>
 </template>
 

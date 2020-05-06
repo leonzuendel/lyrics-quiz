@@ -18,8 +18,9 @@
     "push-page": "npm run push-master && git push && npm run generate:gh-pages && npm run deploy"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
     "nuxt": "^2.0.0",
-    "@nuxtjs/axios": "^5.3.6"
+    "push-dir": "^0.4.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
