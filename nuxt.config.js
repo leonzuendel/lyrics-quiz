@@ -20,6 +20,11 @@ export default {
         rel: "stylesheet",
         href:
           "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700&display=swap"
+      },
+      {
+        rel: "stylesheet",
+        href:
+          "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
       }
     ]
   },

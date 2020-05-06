@@ -15,6 +15,7 @@
         {{ answer }}
       </button>
     </div>
+    <div class="copyright">© Copyright 2020 Leon Zündel</div>
   </div>
 </template>
 

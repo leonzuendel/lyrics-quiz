@@ -40,9 +40,7 @@ export default {
   },
   data() {
     return {
-      params: {
-        apikey: "202852dc9d84671e6d3a51446f9159fc"
-      },
+      params: this.$store.state.params,
       loading: false,
       chartSongs: [],
       randomSong: "",
@@ -58,7 +56,8 @@ export default {
       randomSongs: [],
       currentSongCount: 0,
       gameIsReady: false,
-      gameIsOver: false
+      gameIsOver: false,
+      status: ""
     };
   },
   computed: {},
@@ -101,6 +100,7 @@ export default {
         { params: this.params }
       );
       this.chartSongs = data.message.body.track_list;
+      this.status = data.message.header.status_code;
     },
 
     async getLyrics(songId) {

@@ -1,6 +1,6 @@
 <template>
   <div v-show="gameIsOver" id="game-over">
-    <h1>Game Over</h1>
+    <h1>Geschafft!</h1>
     Dein Score ist <b>{{ score }}</b
     ><br />
     <button @click="restartGame()">Erneut versuchen?</button>

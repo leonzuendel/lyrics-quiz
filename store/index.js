@@ -4,51 +4,26 @@
 // };
 
 export const state = () => ({
-  projects: [],
-  services: [
-    {
-      id: "1",
-      title: "Vue.js",
-      icon: "lab la-vuejs"
-    },
-    {
-      id: "2",
-      title: "Wordpress",
-      icon: "lab la-wordpress-simple"
-    },
-    {
-      id: "3",
-      title: "HTML 5",
-      icon: "lab la-html5"
-    },
-    {
-      id: "4",
-      title: "CSS 3",
-      icon: "lab la-css3-alt"
-    },
-    {
-      id: "5",
-      title: "PHP",
-      icon: "lab la-php"
-    }
-  ],
-  posts: [],
-  loading: true
+  status: "",
+  loading: true,
+  params: {
+    apikey: "202852dc9d84671e6d3a51446f9159fc"
+  }
 });
 
-// export const actions = {
-// async getProjects({ commit }) {
-// state.loading = true;
-// const request = await await this.$axios.$get("http://icanhazip.com", {
-// params
-// });
-// commit("SET_PROJECTS", request.data);
-// }
-// };
+export const actions = {
+  async getStatus({ commit }) {
+    const data = await this.$axios.$get(
+      "/musixmatch/chart.artists.get?page=1&page_size=1&country=de",
+      { params: this.params }
+    );
+    commit("SET_STATUS", data.message.header.status_code);
+  }
+};
 
-// export const mutations = {
-// SET_PROJECTS(state, payload) {
-// state.projects = payload;
-// state.loading = false;
-// }
-// };
+export const mutations = {
+  SET_STATUS(state, payload) {
+    state.status = payload;
+    state.loading = false;
+  }
+};
