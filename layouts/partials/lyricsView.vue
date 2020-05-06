@@ -1,6 +1,6 @@
 <template>
   <div id="lyrics-view">
-    <div class="pre-formatted lyrics">{{ cutLyrics }}</div>
+    <div class="pre-formatted lyrics">"{{ cutLyrics }}"</div>
   </div>
 </template>
 
