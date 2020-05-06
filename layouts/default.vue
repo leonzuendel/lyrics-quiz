@@ -18,7 +18,7 @@
     <div id="view">
       <nuxt />
     </div>
-    <div v-if="iosOverlay && iOS" id="ios-note">
+    <div v-if="iosOverlay === true && iOS === true" id="ios-note">
       <p>
         <i class="las la-download"></i> Speicher diese App auf dem Homescreen
         für vollen <b>Device-Support</b>.
@@ -36,7 +36,8 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      iosOverlay: true
+      iosOverlay: true,
+      iOS: false
     };
   },
   computed: {
@@ -54,16 +55,18 @@ export default {
       } else {
         return "API Offline";
       }
-    },
-    iOS() {
-      const iOS =
-        !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-      return iOS;
     }
   },
 
   mounted() {
     this.$store.dispatch("getStatus");
+  },
+  created() {
+    if (process.browser) {
+      this.iOS =
+        // eslint-disable-next-line nuxt/no-globals-in-created
+        /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
   },
   methods: {}
 };
