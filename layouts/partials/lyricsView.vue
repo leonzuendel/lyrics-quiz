@@ -23,10 +23,14 @@ export default {
   },
   methods: {
     async getLyrics() {
-      const data = await this.$axios.$get(
-        "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=196308462&apikey=f8d7dbbc38172c838c0fb110143084fa"
+      this.$axios.setToken(
+        "1_8V5eBJhdCFpIs-zbkZJiS3rtfUY4iId_RsLSD99MnIsjcKbOktlfVv_QMM_Mj6",
+        "Bearer"
       );
-      this.lyrics = data.message.body.lyrics.lyrics_body;
+      const data = await this.$axios.$get(
+        "https://api.genius.com/songs/378195"
+      );
+      this.lyrics = data;
     }
   }
 };
