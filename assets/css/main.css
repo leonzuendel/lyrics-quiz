@@ -22,7 +22,6 @@
   right: 0;
   background-color: var(--bg-color);
   text-align: center;
-  display: inline;
   z-index: 2;
 }
 

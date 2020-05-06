@@ -1,8 +1,6 @@
 <template>
   <div id="lyrics-view">
-    <div class="lyrics">
-      <p v-for="verse in cutLyrics" :key="verse">{{ verse }}</p>
-    </div>
+    <div class="pre-formatted">{{ cutLyrics }}</div>
   </div>
 </template>
 
@@ -19,9 +17,12 @@ export default {
   },
   computed: {
     cutLyrics() {
-      const stringArray = this.lyrics.split("\n");
-      const newArray = stringArray.slice(0, 13);
-      return newArray;
+      const lines = this.lyrics.split("\n");
+      // remove one line, starting at the first position
+      lines.slice(0, 9);
+      // join the array back into a single string
+      const newtext = lines.join("\n");
+      return newtext;
     }
   },
   methods: {}
