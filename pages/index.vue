@@ -3,13 +3,13 @@
     <div v-show="gameIsOver != true">
       <StartMenu :game-is-ready="gameIsReady" :loading="loading" />
       <InfoView
-        v-if="gameIsReady"
+        v-show="gameIsReady"
         :score="score"
         :current-song-count="currentSongCount"
         :lenght="randomSongs.length"
       />
       <Loader :loading="loading" />
-      <div v-if="gameIsReady">
+      <div v-show="gameIsReady">
         <LyricsView :lyrics="lyrics" />
         <AnswersView
           :answers="shuffledArtists"
