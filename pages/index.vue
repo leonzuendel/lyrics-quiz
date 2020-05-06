@@ -37,7 +37,7 @@ export default {
       artistId: "",
       relatedArtists: "",
       lyrics: "",
-      shuffledArtists: "",
+      shuffledArtists: [],
       score: 0,
       randomArtists: []
     };
