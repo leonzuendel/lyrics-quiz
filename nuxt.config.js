@@ -48,8 +48,7 @@ export default {
   modules: ["@nuxtjs/axios", "@nuxtjs/proxy"],
 
   axios: {
-    proxy: true,
-    baseUrl: "https://lyrics.leonundsteffen.de"
+    proxy: true
   },
 
   proxy: {
