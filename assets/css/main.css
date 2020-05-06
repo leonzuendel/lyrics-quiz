@@ -1,0 +1,28 @@
+/* Variables */
+
+:root {
+  --main-color: #0075bf;
+  --light-color: #c5e3f6;
+}
+
+/* Main */
+
+body {
+  font-family: "Noto Sans SC", sans-serif;
+  font-size: 18px;
+  color: var(--main-color);
+}
+
+h1 {
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+/* Nav */
+
+#nav {
+  background-color: var(--light-color);
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
