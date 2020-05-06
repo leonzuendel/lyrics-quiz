@@ -15,7 +15,8 @@
     "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
     "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
     "push-master": "git push && git add . && git commit -m 'master update' && git push origin HEAD:master",
-    "push-page": "npm run push-master && git push && npm run generate:gh-pages && npm run deploy"
+    "push-page": "npm run push-master && git push && npm run generate:gh-pages && npm run deploy",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
