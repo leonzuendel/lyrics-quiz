@@ -1,34 +1,49 @@
 <template>
-  <div class="container">
-    <div>{{ score }}</div>
-    <button @click="getRandomSong()">Get Random Song</button>
-    {{ randomSongId }}| {{ randomSong.track_name }}| {{ artist }}
-    {{ artistId }}| Genre: {{ genre }}| Relatet:
-    <template v-for="relatetArtist in relatedArtists">
-      <span :key="relatetArtist.artist.artist_name">
-        {{ relatetArtist.artist.artist_name }},
-      </span>
-    </template>
-    <br />
-    Shuffled: {{ shuffledArtists }}
-    <LyricsView :lyrics="lyrics" />
-    <AnswersView :answers="shuffledArtists" :correct-answer="artist" />
+  <div id="container">
+    <div v-show="gameIsOver != true">
+      <StartMenu :game-is-ready="gameIsReady" :loading="loading" />
+      <InfoView
+        v-show="gameIsReady"
+        :score="score"
+        :current-song-count="currentSongCount"
+        :lenght="randomSongs.length"
+      />
+      <Loader :loading="loading" />
+      <div v-show="gameIsReady">
+        <LyricsView :lyrics="lyrics" />
+        <AnswersView
+          :answers="shuffledArtists"
+          :correct-answer="artist"
+          :title="randomSong.track_name"
+        />
+      </div>
+    </div>
+    <GameOver :game-is-over="gameIsOver" :score="score" />
   </div>
 </template>
 
 <script>
+import StartMenu from "@/layouts/partials/startMenu.vue";
+import Loader from "@/layouts/partials/loader.vue";
+import InfoView from "@/layouts/partials/infoView.vue";
 import LyricsView from "@/layouts/partials/lyricsView.vue";
 import AnswersView from "@/layouts/partials/answersView.vue";
+import GameOver from "@/layouts/partials/gameOver.vue";
 export default {
   components: {
+    StartMenu,
+    Loader,
+    InfoView,
     LyricsView,
-    AnswersView
+    AnswersView,
+    GameOver
   },
   data() {
     return {
       params: {
         apikey: "f8d7dbbc38172c838c0fb110143084fa"
       },
+      loading: false,
       chartSongs: [],
       randomSong: "",
       randomSongId: "",
@@ -39,7 +54,11 @@ export default {
       lyrics: "",
       shuffledArtists: [],
       score: 0,
-      randomArtists: []
+      randomArtists: [],
+      randomSongs: [],
+      currentSongCount: 0,
+      gameIsReady: false,
+      gameIsOver: false
     };
   },
   computed: {},
@@ -115,8 +134,15 @@ export default {
         array.push(this.relatedArtists[1].artist.artist_name);
       } else {
         await this.getRandomArtists();
-        array.push(this.randomArtists[0].artist.artist_name);
-        array.push(this.randomArtists[1].artist.artist_name);
+        if (
+          this.randomArtists[0].artist.artist_name !== this.artist &&
+          this.randomArtists[1].artist.artist_name !== this.artist
+        ) {
+          array.push(this.randomArtists[0].artist.artist_name);
+          array.push(this.randomArtists[1].artist.artist_name);
+        } else {
+          this.shuffleArtists();
+        }
       }
       let currentIndex = array.length;
       let temporaryValue;
@@ -165,6 +191,60 @@ export default {
       // await this.getRelatetArtists();
       // await this.getLyrics(this.randomSongId);
       // await this.shuffleArtists();
+    },
+
+    async getRandomSongs(amount) {
+      this.score = 0;
+      this.currentSongCount = 0;
+      this.gameIsOver = false;
+      this.loading = true;
+      this.randomSongs = [];
+      await this.getCharts();
+
+      const arr = [];
+      while (arr.length < amount) {
+        const r = Math.floor(Math.random() * 100);
+        if (!arr.includes(r)) arr.push(r);
+      }
+
+      arr.forEach((num) => {
+        this.randomSongs.push(this.chartSongs[num]);
+      });
+      this.randomSong = this.randomSongs[this.currentSongCount].track;
+      this.randomSongId = this.randomSongs[
+        this.currentSongCount
+      ].track.track_id;
+      this.artist = this.randomSong.artist_name;
+      this.artistId = this.randomSong.artist_id;
+      await this.getRelatetArtists();
+      await this.getLyrics(this.randomSongId);
+      await this.shuffleArtists();
+      this.loading = false;
+      this.gameIsReady = true;
+    },
+
+    async nextSong() {
+      this.loading = true;
+      if (this.currentSongCount < this.randomSongs.length - 1) {
+        this.currentSongCount++;
+        this.randomSong = this.randomSongs[this.currentSongCount].track;
+        this.randomSongId = this.randomSongs[
+          this.currentSongCount
+        ].track.track_id;
+        this.artist = this.randomSong.artist_name;
+        this.artistId = this.randomSong.artist_id;
+        await this.getRelatetArtists();
+        await this.getLyrics(this.randomSongId);
+        await this.shuffleArtists();
+        this.loading = false;
+      } else {
+        this.loading = false;
+        this.endGame();
+      }
+    },
+
+    endGame() {
+      this.gameIsOver = true;
     }
   }
 };

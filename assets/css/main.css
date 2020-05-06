@@ -3,9 +3,55 @@
 :root {
   --main-color: #0075bf;
   --light-color: #c5e3f6;
+  --wrong-color: #e1232c;
+  --wrong-light-color: #eed4cc;
+  --correct-color: #038654;
+  --correct-light-color: #96f7d2;
+  --bg-color: white;
+  --site-padding: 15px;
+  --header-height: 84px;
+}
+
+/* Loader */
+
+.loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-color);
+  text-align: center;
+}
+
+.loader .loading {
+  display: inline-block;
+  margin-top: 35vh;
+  padding: 20px 30px 20px 30px;
+  border-radius: 15px;
+  background-color: var(--light-color);
+  color: var(--main-color);
 }
 
 /* Main */
+
+*:focus {
+  outline: -webkit-focus-ring-color none;
+}
+
+*::placeholder {
+}
+
+*:focus::placeholder {
+  color: var(--light-color);
+}
+
+html,
+body {
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+}
 
 body {
   font-family: "Noto Sans SC", sans-serif;
@@ -23,6 +69,10 @@ h1 {
   white-space: pre;
 }
 
+#container {
+  margin-top: var(--header-height);
+}
+
 /* Nav */
 
 #nav {
@@ -30,4 +80,129 @@ h1 {
   width: 100%;
   text-align: center;
   padding: 20px;
+  z-index: 1000;
+  position: fixed;
+  height: var(--header-height);
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Start Menu */
+
+#start-menu {
+  padding-left: var(--site-padding);
+  padding-right: var(--site-padding);
+  padding-top: 15px;
+  text-align: center;
+}
+
+#start-menu h1 {
+  padding: 15px;
+}
+
+.start-menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+
+@media (max-width: 800px) {
+  .start-menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.start-menu-grid button {
+  width: 100%;
+}
+
+/* Info View */
+
+.score {
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  padding: 15px;
+}
+
+.count {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+/* Lyrics View */
+
+#lyrics-view {
+  padding-left: var(--site-padding);
+  padding-right: var(--site-padding);
+}
+
+/* Answers View */
+
+#answers-view {
+  padding-left: var(--site-padding);
+  padding-right: var(--site-padding);
+  padding-bottom: 15px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-color);
+}
+
+.currently-playing {
+  text-align: center;
+  padding: 15px;
+}
+
+#answers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+
+@media (max-width: 800px) {
+  #answers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+#answers-grid button {
+  width: 100%;
+}
+
+button {
+  background-color: var(--light-color);
+  padding: 20px;
+  border-radius: 15px;
+  border: none;
+  color: var(--main-color);
+  cursor: pointer;
+  display: inline-block;
+}
+
+button.wrong {
+  color: var(--wrong-color);
+  background-color: var(--wrong-light-color);
+}
+
+button.correct {
+  color: var(--correct-color);
+  background-color: var(--correct-light-color);
+}
+
+/* Game Over */
+
+#game-over {
+  padding-top: 25vh;
+  text-align: center;
+}
+
+#game-over h1 {
+  font-size: 3em;
+}
+
+#game-over button {
+  margin: 30px;
 }

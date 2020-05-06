@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h2>lyricsView</h2>
-    Lyrics:
+  <div id="lyrics-view">
     <div class="pre-formatted">{{ lyrics }}</div>
   </div>
 </template>
