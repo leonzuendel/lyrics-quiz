@@ -1,7 +1,7 @@
 <template>
   <div id="answers-view">
     <div class="currently-playing">
-      <span v-show="answered"
+      <span v-if="answered"
         >{{ message }} Das war <b>{{ title }}</b> von
         <b>{{ correctAnswer }}</b></span
       >
