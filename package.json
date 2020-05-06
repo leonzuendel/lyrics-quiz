@@ -10,7 +10,12 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
+    "push-master": "git push && git add . && git commit -m 'master update' && git push origin HEAD:master",
+    "push-page": "npm run push-master && git push && npm run generate:gh-pages && npm run deploy"
   },
   "dependencies": {
     "nuxt": "^2.0.0",
