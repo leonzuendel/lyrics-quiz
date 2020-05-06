@@ -1,8 +1,13 @@
 <template>
   <div>
     <h2>The View</h2>
+<<<<<<< Updated upstream
     Lyrics: {{ Lyrics }}
     <button @click="getLyrics()">Get Lyrics!</button>
+=======
+    Lyrics: {{ lyrics }}
+    <button @click="getLyrics()">Get Lyrics</button>
+>>>>>>> Stashed changes
   </div>
 </template>
 
