@@ -1,5 +1,5 @@
 <template>
-  <div v-show="gameIsOver" id="game-over">
+  <div v-if="gameIsOver" id="game-over">
     <h1>Game Over</h1>
     Dein Score ist <b>{{ score }}</b
     ><br />
