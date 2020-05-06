@@ -18,7 +18,7 @@
     <div id="view">
       <nuxt />
     </div>
-    <div v-if="iosOverlay === true && iOS === true" id="ios-note">
+    <!--<div v-if="iosOverlay === true && iOS === true" id="ios-note">
       <p>
         <i class="las la-download"></i> Speicher diese App auf dem Homescreen
         für vollen <b>Device-Support</b>.
@@ -26,8 +26,7 @@
       <p>Gehe dazu auf das <b>Teilen</b> Symbol > <b>Zum Home-Bildschirm</b></p>
       <div class="close" @click="iosOverlay = false">
         <i class="las la-times"></i>
-      </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -35,10 +34,7 @@
 import { mapState } from "vuex";
 export default {
   data() {
-    return {
-      iosOverlay: true,
-      iOS: false
-    };
+    return {};
   },
   computed: {
     ...mapState(["status"]),
@@ -60,13 +56,6 @@ export default {
 
   mounted() {
     this.$store.dispatch("getStatus");
-  },
-  created() {
-    if (process.browser) {
-      this.iOS =
-        // eslint-disable-next-line nuxt/no-globals-in-created
-        /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    }
   },
   methods: {}
 };
