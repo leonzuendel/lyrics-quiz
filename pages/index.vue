@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       params: {
-        apikey: "f8d7dbbc38172c838c0fb110143084fa"
+        apikey: "202852dc9d84671e6d3a51446f9159fc"
       },
       loading: false,
       chartSongs: [],
