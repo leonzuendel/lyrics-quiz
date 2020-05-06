@@ -37,12 +37,12 @@ export default {
   methods: {
     checklAnswer(answer) {
       if (answer === this.correctAnswer) {
-        this.isFalse = true;
-        this.isCorrect = false;
+        this.isFalse = false;
+        this.isCorrect = true;
         this.$parent.score += 100;
       } else {
-        this.isCorrect = true;
-        this.isFalse = false;
+        this.isCorrect = false;
+        this.isFalse = true;
         if (this.$parent.score === 0) {
         } else {
           this.$parent.score -= 100;
