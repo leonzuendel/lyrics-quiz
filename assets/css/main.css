@@ -11,11 +11,16 @@ body {
   font-family: "Noto Sans SC", sans-serif;
   font-size: 18px;
   color: var(--main-color);
+  font-weight: 300;
 }
 
 h1 {
   font-size: 1.6em;
   font-weight: 700;
+}
+
+.pre-formatted {
+  white-space: pre;
 }
 
 /* Nav */

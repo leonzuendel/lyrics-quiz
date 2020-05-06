@@ -45,17 +45,24 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    "@nuxtjs/axios"
-  ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
-  axios: {},
+  modules: ["@nuxtjs/axios", "@nuxtjs/proxy"],
 
-  proxy: {},
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    "/genius/": {
+      target: "https://api.genius.com/",
+      pathRewrite: { "^/genius/": "" },
+      changeOrigin: true
+    },
+    "/musixmatch/": {
+      target: "https://api.musixmatch.com/ws/1.1/",
+      pathRewrite: { "^/musixmatch/": "" },
+      changeOrigin: true
+    }
+  },
   /*
    ** Build configuration
    */
