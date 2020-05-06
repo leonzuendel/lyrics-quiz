@@ -22,6 +22,8 @@
   right: 0;
   background-color: var(--bg-color);
   text-align: center;
+  display: inline;
+  z-index: 2;
 }
 
 .loader .loading {
@@ -34,6 +36,16 @@
 }
 
 /* Main */
+
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
 
 *:focus {
   outline: -webkit-focus-ring-color none;
@@ -136,6 +148,13 @@ h1 {
 #lyrics-view {
   padding-left: var(--site-padding);
   padding-right: var(--site-padding);
+  text-align: center;
+}
+
+.lyrics {
+  display: inline-block;
+  text-align: left;
+  padding-top: 6vh;
 }
 
 /* Answers View */
